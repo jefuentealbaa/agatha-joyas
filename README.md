@@ -24,7 +24,7 @@ img/              (opcional) fotos reales
 Cada tarjeta (foto o nombre) lleva a `#/producto/<id>`. Es una sola plantilla (`js/product.js`) que lee `PRODUCTS`, `PRODUCT_INFO` y `CAT_INFO` de `js/data.js`: para agregar un producto nuevo basta con sumarlo ahí y su ficha existe sola. Incluye selector de largo/talla según categoría, cantidad, favorito, "Comprar ahora", acordeones de detalles y productos relacionados. Los productos agotados muestran un aviso de stock en vez de "Agregar". Los textos de las fichas son de ejemplo.
 
 ## Animaciones
-Aparición al hacer scroll (el hero queda estático, sin animación), cabecera que se compacta, zoom en fotos al pasar el cursor, "Ver detalle" en tarjetas, producto que vuela a la bolsa al agregarlo, panel del carrito que se desliza, rebote del contador y del corazón, y zoom con lupa en la ficha. Si el sistema tiene activado "reducir movimiento", todo se muestra sin animar. (El manual de marca pedía sobriedad; las animaciones se pidieron después y son suaves a propósito.)
+Aparición al hacer scroll (en el hero se anima el texto, pero la foto queda estática), cabecera que se compacta, zoom en fotos al pasar el cursor, "Ver detalle" en tarjetas, producto que vuela a la bolsa al agregarlo, panel del carrito que se desliza, rebote del contador y del corazón, y zoom con lupa en la ficha. Si el sistema tiene activado "reducir movimiento", todo se muestra sin animar. (El manual de marca pedía sobriedad; las animaciones se pidieron después y son suaves a propósito.)
 
 ## Flujo de compra (visual)
 Agregar al carrito (abre el panel lateral) → `#/carrito` → `#/checkout` → `#/confirmacion`.
