@@ -27,6 +27,8 @@ input:focus, select:focus, textarea:focus { border-color: var(--rosa) !important
 /* Fotos: aparecen suaves y se acercan al pasar el cursor */
 .frame > img { opacity: 0; transition: opacity .7s ease, transform 1s var(--ease); }
 .frame > img.loaded { opacity: 1; }
+/* El hero no se anima: la foto aparece directa, sin fundido */
+.hero-img .frame > img { opacity: 1; transition: none; }
 .prod:hover .frame > img, .cat-card:hover .frame > img, .acc-card:hover .frame > img,
 .col-card:hover .frame > img, .post:hover .frame > img { transform: scale(1.07); }
 .col-card .cap span { display: inline-block; transition: transform .4s var(--ease); }

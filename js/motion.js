@@ -10,7 +10,7 @@
 
   // Qué elementos aparecen con scroll (cada uno recibe .reveal)
   const REVEAL = [
-    '.sec-head', '.page-head', '.benefit', '.cat-card', '.acc-card', '.prod', '.col-card', '.post',
+    '.sec-head', '.page-head', '.cat-card', '.acc-card', '.prod', '.col-card', '.post',
     '.value', '.step', '.channel', '.split > *', '.featured', '.cta-box', '.values-in > .center',
     '.ship-bar', '.line', '.summary', '.co-card', '.steps-bar', '.faq', '.wa-box', '.form',
     '.pd-media', '.pd-info > *', '.cart-empty', '.empty',
