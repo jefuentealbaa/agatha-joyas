@@ -35,9 +35,12 @@ const PRICE_RANGES = {
 let phCount = 0;
 function image(id, caption, ratio, opts = {}) {
   const v = opts.dark ? 'dark' : ['', 'v2', 'v3'][phCount++ % 3];
+  // plain: marcador sin ícono ni texto (hero). eager: carga la foto sin esperar al scroll
+  const ph = opts.plain ? `<div class="ph ${v}"></div>`
+    : `<div class="ph ${v}"><svg viewBox="0 0 24 24" aria-hidden="true">${ICONS.gem}</svg><span>${caption}</span></div>`;
   return `<div class="frame ${ratio}">
-    <div class="ph ${v}">${ICONS.gem ? `<svg viewBox="0 0 24 24" aria-hidden="true">${ICONS.gem}</svg>` : ''}<span>${caption}</span></div>
-    <img src="img/${id}.jpg" alt="${caption}" loading="lazy" onload="this.classList.add('loaded')" onerror="this.remove()">
+    ${ph}
+    <img src="img/${id}.jpg" alt="${caption}" loading="${opts.eager ? 'eager' : 'lazy'}" ${opts.eager ? 'fetchpriority="high"' : ''} onload="this.classList.add('loaded')" onerror="this.remove()">
     ${opts.inner || ''}
   </div>`;
 }
@@ -89,7 +92,7 @@ const pages = {
         </div>
       </div>
       <div class="hero-img">
-        ${image('hero', 'Hero · modelo con collar y aros dorados (vertical, luz cálida)', '', { dark: true })}
+        ${image('hero', 'Modelo con collar y aros dorados', '', { dark: true, plain: true, eager: true })}
         <div class="hero-fade"></div>
         <div class="hero-words"><span>ELEGANCIA</span><span>AUTENTICIDAD</span><span>TU ESENCIA</span></div>
       </div>
