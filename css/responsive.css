@@ -1,0 +1,160 @@
+/* ==========================================================
+   Responsive: tablet (≤ 900px) y móvil (≤ 600px / ≤ 400px)
+   Se carga al final, así que ajusta lo definido en los otros CSS.
+   ========================================================== */
+
+/* Red de seguridad: nunca scroll horizontal (clip no rompe el sticky) */
+html, body { overflow-x: clip; }
+
+/* Las grillas con ancho mínimo fijo ya no se desbordan en pantallas angostas */
+.grid-posts  { grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); }
+.grid-blog   { grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); }
+.grid-3      { grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); }
+.fields, .form { grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); }
+.news form   { flex: 1 1 280px; min-width: 0; }
+.news input  { width: 100%; }
+
+/* ---------- Cabecera pegajosa (sticky) ---------- */
+.site-header { position: sticky; top: 0; z-index: 40; }
+.searchbar { position: static; }
+
+/* ---------- Filtros plegables ---------- */
+button.filters-title { background: none; border: 0; border-bottom: 1px solid var(--nude); padding: 0 0 16px; width: 100%; font-family: inherit; color: inherit; cursor: default; text-align: left; }
+.filters-title .chev { display: none; margin-left: auto; transition: transform .3s var(--ease, ease); }
+
+/* ===================== TABLET ===================== */
+@media (min-width: 601px) and (max-width: 900px) {
+  .grid-prod.fill { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px 16px; }
+  .grid-prod.fill .prod .btn { width: 100%; padding: 0 10px; font-size: 11px; justify-content: center; }
+}
+@media (min-width: 761px) and (max-width: 900px) {
+  .pd { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
+  .pd-media { position: sticky; top: 88px; }
+  .pd-name { font-size: 32px; }
+  .hero-img { min-height: 420px; }
+}
+
+@media (max-width: 900px) {
+  .header-in { min-height: 64px; }
+  .site-header.scrolled .header-in { min-height: 56px; }
+  .nav { max-height: calc(100vh - 64px); max-height: calc(100dvh - 64px); overflow-y: auto; }
+  /* Zonas táctiles más grandes en los íconos */
+  .tool { padding: 10px; margin: -10px; }
+  .badge { top: 2px; right: 0; }
+
+  .section.top { padding-top: 72px; }
+  .section.bottom { padding-bottom: 72px; }
+  .band .split, .values-in { padding-top: 72px; padding-bottom: 72px; }
+  .split { gap: 40px; }
+  .news-in { padding: 48px 24px; }
+
+  /* Filtros: botón que despliega la lista, en vez de ocupar la pantalla */
+  aside.filters { flex: 1 1 100%; gap: 0; }
+  button.filters-title { cursor: pointer; padding: 14px 16px; border: 1px solid var(--nude); background: #fff; }
+  .filters-title .chev { display: block; }
+  .filters.open .filters-title .chev { transform: rotate(180deg); }
+  .filters .fgroup, .filters > .btn { display: none; }
+  .filters.open .fgroup { display: flex; padding: 16px 16px 20px; background: #fff; border: 1px solid var(--nude); border-top: 0; }
+  .filters.open > .btn { display: inline-flex; margin-top: 16px; align-self: flex-start; }
+  .layout { gap: 24px; }
+
+  /* Barra de beneficios: 4 columnas parejas en tablet (2x2 en móvil) */
+  .benefits-in { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; }
+  .benefit { padding: 8px 10px; gap: 10px; }
+  .benefit b { font-size: 13px; line-height: 1.3; }
+  .benefit span { font-size: 11px; line-height: 1.3; }
+
+  /* Ficha: cantidad y favorito arriba, "Agregar" a todo el ancho debajo */
+  .pd-buy { flex-wrap: wrap; }
+  .pd-buy .qty { order: 1; }
+  .pd-fav { order: 2; margin-left: auto; }
+  .pd-add { order: 3; flex: 1 1 100%; }
+}
+
+/* ===================== MÓVIL ===================== */
+@media (max-width: 600px) {
+  .announce { font-size: 11px; padding: 8px 40px 8px 12px; gap: 8px; }
+  .h1, .nosotros-h1 { font-size: 38px; }
+  .h2 { font-size: 28px; }
+  .hero-text { padding: 48px 24px; gap: 20px; }
+  .hero h1 { font-size: 38px; }
+  .hero-img { min-height: 380px; }
+  .hero-words { font-size: 11px; letter-spacing: .24em; right: 20px; }
+  .hero-cta .btn { flex: 1 1 100%; justify-content: center; }
+  .lead { font-size: 16px; }
+
+  /* Barra de beneficios en 2x2 en vez de 4 filas apiladas */
+  .benefits-in { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 8px; padding-top: 14px; padding-bottom: 14px; }
+  .benefit { padding: 8px 4px; gap: 10px; }
+  .benefit svg { width: 22px; height: 22px; }
+  .benefit b { font-size: 13px; line-height: 1.3; }
+  .benefit span { font-size: 11px; line-height: 1.3; }
+
+  .section.top { padding-top: 56px; }
+  .section.bottom { padding-bottom: 56px; }
+  .section { padding-left: 20px; padding-right: 20px; }
+  .header-in, .benefits-in, .news-in, .foot-in, .foot-bottom, .searchbar form { padding-left: 20px; padding-right: 20px; }
+  .sec-head { margin-bottom: 24px; }
+  .band .split, .values-in { padding: 56px 20px; }
+  .split { gap: 28px; }
+  .value { padding: 32px 24px; }
+  .cta-box { padding: 40px 24px; }
+
+  /* Catálogo en 2 columnas, como en una tienda móvil */
+  .grid-prod, .grid-prod.fill, .grid-cat, .grid-col, .grid-acc { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 12px; }
+  .grid-acc .acc-card { font-size: 11px; letter-spacing: .08em; }
+  .prod .btn { width: 100%; padding: 0 8px; font-size: 11px; letter-spacing: .06em; justify-content: center; }
+  .prod-name { font-size: 16px; }
+  .prod-price { font-size: 14px; }
+  .prod-cat { font-size: 10px; }
+  .prod-tag { top: 8px; left: 8px; font-size: 9px; padding: 3px 6px; }
+  .fav { top: 8px; right: 8px; width: 30px; height: 30px; }
+  .cat-name { font-size: 12px; letter-spacing: .14em; }
+  .col-card .cap { left: 14px; right: 14px; bottom: 14px; }
+  .col-card .cap b { font-size: 20px; }
+  .col-card .cap span { font-size: 10px; }
+  .results-bar { gap: 12px; }
+  select.sel { width: 100%; }
+
+  /* Ficha */
+  .pd-wrap { padding-top: 20px; padding-bottom: 56px; }
+  .pd-name { font-size: 30px; }
+  .pd-buy { flex-wrap: wrap; }
+  .pd-buy .qty { order: 1; }
+  .pd-fav { order: 2; margin-left: auto; }
+  .pd-add { order: 3; flex: 1 1 100%; }
+  .pd-crumb { font-size: 11px; }
+
+  /* Carrito y checkout */
+  .cart-layout { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .co-card, .summary { padding: 20px; }
+  .opt-head { padding: 14px; gap: 12px; }
+  .co-card h2 { font-size: 21px; }
+  .steps-bar { font-size: 10px; letter-spacing: .06em; gap: 6px; }
+  .drawer-body, .drawer-foot, .drawer-head { padding-left: 20px; padding-right: 20px; }
+  .toast { bottom: 88px; }
+
+  /* Contacto, blog, footer */
+  .form { padding: 20px; }
+  .featured { padding: 16px; gap: 20px; }
+  .foot-in { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 20px; padding-top: 48px; }
+  .foot-in > div:first-child { grid-column: 1 / -1; }
+  .foot-bottom { flex-direction: column; gap: 6px; }
+  .news form { max-width: none; flex-basis: 100%; }
+  .news h2 { font-size: 24px; }
+
+  .wa-float { right: 16px; bottom: 16px; width: 52px; height: 52px; }
+}
+
+/* ===================== MÓVIL ANGOSTO ===================== */
+@media (max-width: 400px) {
+  .logo b { font-size: 20px; letter-spacing: .14em; }
+  .logo small { letter-spacing: .4em; }
+  .header-in { gap: 8px; }
+  .tools { gap: 12px; }
+  .h1, .hero h1 { font-size: 34px; }
+  .grid-cat, .grid-acc { gap: 12px 10px; }
+  .pd-name { font-size: 27px; }
+  .line { grid-template-columns: 72px 1fr; gap: 12px; }
+  .line .thumb { width: 72px; }
+}

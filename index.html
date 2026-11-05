@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="css/cart.css">
 <link rel="stylesheet" href="css/product.css">
 <link rel="stylesheet" href="css/motion.css">
+<link rel="stylesheet" href="css/responsive.css">
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
@@ -28,10 +29,11 @@
     <nav class="nav" id="nav" aria-label="Principal"></nav>
     <div class="tools" id="tools"></div>
   </div>
+  <!-- La búsqueda vive dentro de la cabecera para que se quede pegada con ella -->
+  <div class="searchbar" id="searchbar" hidden>
+    <form id="search-form"><input id="search-input" type="search" placeholder="Buscar joyas… (ej: perla, aros, collar)" aria-label="Buscar productos"><button class="btn btn-primary btn-sm" type="submit">Buscar</button></form>
+  </div>
 </header>
-<div class="searchbar" id="searchbar" hidden>
-  <form id="search-form"><input id="search-input" type="search" placeholder="Buscar joyas… (ej: perla, aros, collar)" aria-label="Buscar productos"><button class="btn btn-primary btn-sm" type="submit">Buscar</button></form>
-</div>
 
 <main id="app"></main>
 

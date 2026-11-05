@@ -17,11 +17,15 @@ js/motion.js      Animaciones: scroll reveal, "volar al carrito", zoom de foto
 css/cart.css      Estilos del carrito y el checkout
 css/product.css   Estilos de las tarjetas clicables y de la ficha
 css/motion.css    Keyframes y transiciones (respetan "reducir movimiento")
+css/responsive.css  Ajustes para tablet (≤ 900px) y móvil (≤ 600px / ≤ 400px)
 img/              (opcional) fotos reales
 ```
 
 ## Ficha de producto
 Cada tarjeta (foto o nombre) lleva a `#/producto/<id>`. Es una sola plantilla (`js/product.js`) que lee `PRODUCTS`, `PRODUCT_INFO` y `CAT_INFO` de `js/data.js`: para agregar un producto nuevo basta con sumarlo ahí y su ficha existe sola. Incluye selector de largo/talla según categoría, cantidad, favorito, "Comprar ahora", acordeones de detalles y productos relacionados. Los productos agotados muestran un aviso de stock en vez de "Agregar". Los textos de las fichas son de ejemplo.
+
+## Responsive
+Probado de 320 px a 1024 px en las 9 vistas (sin scroll horizontal). La cabecera es `sticky`: queda pegada arriba al hacer scroll (la barra de búsqueda va dentro de ella). En tablet la ficha mantiene 2 columnas y el catálogo pasa a 3; en móvil el catálogo va en 2 columnas, los filtros se pliegan en un botón "Filtrar", la barra de beneficios pasa a 2x2 y el menú es hamburguesa.
 
 ## Animaciones
 Aparición al hacer scroll (en el hero se anima el texto, pero la foto queda estática), cabecera que se compacta, zoom en fotos al pasar el cursor, "Ver detalle" en tarjetas, producto que vuela a la bolsa al agregarlo, panel del carrito que se desliza, rebote del contador y del corazón, y zoom con lupa en la ficha. Si el sistema tiene activado "reducir movimiento", todo se muestra sin animar. (El manual de marca pedía sobriedad; las animaciones se pidieron después y son suaves a propósito.)

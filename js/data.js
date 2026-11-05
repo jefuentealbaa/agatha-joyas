@@ -135,4 +135,5 @@ const ICONS = {
   filter: '<path d="M21 4h-7M10 4H3M21 12h-9M8 12H3M21 20h-5M12 20H3M14 2v4M8 10v4M16 18v4"/>',
   menu:   '<path d="M4 6h16M4 12h16M4 18h16"/>',
   close:  '<path d="M18 6 6 18M6 6l12 12"/>',
+  chev:   '<path d="m6 9 6 6 6-6"/>',
 };

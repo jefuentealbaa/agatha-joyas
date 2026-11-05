@@ -22,6 +22,7 @@ const state = {
   q: '', sort: 'vendidos', pg: 1,
   blogTag: 'Todos', blogMore: false,
   faq: 0, formSent: false, subscribed: false,
+  filtersOpen: false,   // panel de filtros desplegado (solo se nota en móvil/tablet)
 };
 
 const NAV = [['inicio', 'Inicio'], ['nosotros', 'Nosotros'], ['productos', 'Productos'], ['colecciones', 'Colecciones'], ['blog', 'Blog'], ['contacto', 'Contacto']];
@@ -205,8 +206,8 @@ const pages = {
       </div>
       <div class="chips">${chips}</div>
       <div class="layout">
-        <aside class="filters" aria-label="Filtros">
-          <div class="filters-title">${ic('filter', 'sm')}Filtrar</div>
+        <aside class="filters ${state.filtersOpen ? 'open' : ''}" aria-label="Filtros">
+          <button class="filters-title" data-act="toggle-filters" aria-expanded="${state.filtersOpen}">${ic('filter', 'sm')}Filtrar${ic('chev', 'sm chev')}</button>
           ${groups.map(g => `<div class="fgroup"><b>${g.title}</b>${g.items.map(([v, label]) =>
             `<label><input type="checkbox" data-act="filter" data-key="${g.key}" data-v="${v}" ${state[g.key].includes(v) ? 'checked' : ''}>${label}</label>`).join('')}</div>`).join('')}
           <button class="btn btn-sm" data-act="clear">Limpiar filtros</button>
@@ -399,6 +400,7 @@ document.addEventListener('click', e => {
     case 'add': flyToCart(el, () => { cartAdd(d.id); openDrawer(); }); break;
     case 'cat': e.preventDefault(); resetFilters(); if (d.cat) state.cats = [d.cat]; go('productos'); break;
     case 'col': resetFilters(); state.cols = [d.col]; go('productos'); break;
+    case 'toggle-filters': state.filtersOpen = !state.filtersOpen; render(); break;
     case 'chip': state.cats = d.v === 'Todos' ? [] : [d.v]; state.pg = 1; render(); break;
     case 'clear': resetFilters(); render(); break;
     case 'clear-q': e.preventDefault(); state.q = ''; render(); break;
